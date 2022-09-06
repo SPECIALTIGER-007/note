@@ -1,4 +1,4 @@
-## 简单动态字符串（SDS,simple dynamic string）
+# 简单动态字符串（SDS,simple dynamic string）
 
 ```c
 struct sdshdr {
@@ -14,7 +14,7 @@ struct sdshdr {
 
 buf和c语言的字符串类型一样，以空字符('\0')结尾，不同的是，len计算长度时，不计算最后空字符的长度。遵循同样以空字符结尾的好处是，SDS可以直接重用一部分C字符串函数库里面的函数。
 
-### redis中使用sds而不用c字符串
+## redis中使用sds而不用c字符串
 
 #### 1）常数复杂度获取字符串长度。
 
@@ -63,3 +63,86 @@ C字符串必须符合某种编码(比如ASCII),并且除了末尾的空字符�
 #### 5）兼容部分C字符串函数。
 
 通过遵循C字符串以空字符结尾的惯例，SDS可以在有需要时重用<string.h>函数库，从而避免了不必要的代码重复。
+
+# 链表
+
+除了链表键,发布与订阅,慢查询,监视器等功能也用到了链表,redis还用链表保存多个客户端的状态信息,使用链表构建客户端输出缓冲区
+
+```c
+typedef struct list {
+    // 
+表头节点
+    listNode * head;
+    // 
+表尾节点
+    listNode * tail;
+    // 
+链表所包含的节点数量
+    unsigned long len;
+    // 
+节点值复制函数
+    void *(*dup)(void *ptr);
+    // 
+节点值释放函数
+    void (*free)(void *ptr);
+    // 
+节点值对比函数
+    int (*match)(void *ptr,void *key);
+} list;
+```
+
+## 特性
+
+1. 双端 因为有头尾指针,获取某个节点的前置和后置节点的复杂度都为O(1)
+2. 无环 头指针的prev和尾指针的next都指向NULL
+3. 带表头和表尾指针
+4. 带链表长度计数器
+5. 多态  
+   链表节点使用void*指针来保存节点值，并且可以通过list结构的dup、free、match三个属性为节点值设置类型特定函数，所以链表可以用于保存各种不同类型的值。
+
+# 字典
+
+又称符号表(symbol table),关联数组(associative array),映射(map),是一种保存键值对的数据结构
+
+Redis的数据库就是使用字典来作为底层实现的，对数据库的增、删、查、改操作也是构建在对字典的操作之上的
+
+除了用来表示数据库之外，字典还是哈希键的底层实现之一，当一个哈希键包含的键值对比较多，又或者键值对中的元素都是比较长的字符串时，Redis就会使用字典作为哈希键的底层实现
+
+哈希表
+
+```c
+typedef struct dictht {
+    // 
+哈希表数组
+    dictEntry **table;
+    // 
+哈希表大小
+    unsigned long size;
+    //
+哈希表大小掩码，用于计算索引值
+    //
+总是等于size-1
+    unsigned long sizemask;
+    // 
+该哈希表已有节点的数量
+    unsigned long used;
+} dictht;
+```
+
+哈希表节点
+
+```c
+typedef struct dictEntry {
+    // 键
+    void *key;
+    // 值
+    union{
+        void *val;
+        uint64_tu64;
+        int64_ts64;
+    } v;
+    // 指向下个哈希表节点，形成链表
+    struct dictEntry *next;
+} dictEntry;
+```
+
