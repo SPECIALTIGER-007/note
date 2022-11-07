@@ -85,8 +85,8 @@ Throwable targetException = var6.getTargetException
 ## Gson.fromJson报错（json转换为javaBean对象报错）
 
 ```
-java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read
+java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $ at
+com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read
 ```
 
 因为：redis存入缓存时，过期时间设置错误，没有写时间单元，
