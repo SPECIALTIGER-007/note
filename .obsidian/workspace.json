@@ -1,0 +1,148 @@
+{
+  "main": {
+    "id": "1fc42fdf2e05bb30",
+    "type": "split",
+    "children": [
+      {
+        "id": "cc1a38005d579b3e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ede06c219c2aa595",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "fe3c0e0579bfeca6",
+    "type": "split",
+    "children": [
+      {
+        "id": "97164838c38848e8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3a8b03e79fd8b910",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "cfb599d0db53eb00",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "e46de20b41717ee2",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "2bef3893f74fb570",
+    "type": "split",
+    "children": [
+      {
+        "id": "ad9e9e857e1d0e2e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9658a6afc191f55b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "90e5dc6784bcd1f4",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "f8c88a7bd4815a02",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "d96aa73ec6921d72",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "3a8b03e79fd8b910",
+  "lastOpenFiles": [
+    "编译原理.md",
+    "计算机体系结构.md",
+    "操作系统导论.md",
+    "布隆过滤器.md"
+  ]
+}
